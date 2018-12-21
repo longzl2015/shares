@@ -7,12 +7,12 @@
 # 收盘价
 # 最低价
 # 最高价
-# 涨跌额
-# 涨跌幅(%)
-# 成交量(手)
-# 成交金额(万元)
-# 振幅(%)
-# 换手率(%)
+# 涨跌额        - AdvanceDecline
+# 涨跌幅(%)     - AdvanceDecline
+# 成交量(手)     - tradingVolume
+# 成交金额(万元) - tradingAmount
+# 振幅(%)       - Amplitude
+# 换手率(%)     - turnoverRate
 #
 # See documentation in:
 # https://doc.scrapy.org/en/latest/topics/items.html
@@ -21,10 +21,15 @@ import scrapy
 
 
 class ShareItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-
-
-    opening = scrapy.Field()
-    close = scrapy.Field()
+    tradeDate = scrapy.Field()
+    openingPrice = scrapy.Field()
+    closePrice = scrapy.Field()
+    minPrice = scrapy.Field()
+    maxPrice = scrapy.Field()
+    adAmount = scrapy.Field()
+    adRate = scrapy.Field()
+    tradingVolume = scrapy.Field()
+    tradingAmount = scrapy.Field()
+    amplitude = scrapy.Field()
+    turnoverRate = scrapy.Field()
     pass
