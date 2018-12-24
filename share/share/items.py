@@ -21,15 +21,15 @@ import scrapy
 
 
 class ShareItem(scrapy.Item):
-    tradeDate = scrapy.Field()
-    openingPrice = scrapy.Field()
-    closePrice = scrapy.Field()
-    minPrice = scrapy.Field()
-    maxPrice = scrapy.Field()
-    adAmount = scrapy.Field()
-    adRate = scrapy.Field()
-    tradingVolume = scrapy.Field()
-    tradingAmount = scrapy.Field()
-    amplitude = scrapy.Field()
-    turnoverRate = scrapy.Field()
+    # tradeDate = scrapy.Field()
+    # openingPrice = scrapy.Field()
+    # closePrice = scrapy.Field()
+    # minPrice = scrapy.Field()
+    # maxPrice = scrapy.Field()
+    # adAmount = scrapy.Field()
+    # adRate = scrapy.Field()
+    # tradingVolume = scrapy.Field()
+    # tradingAmount = scrapy.Field()
+    # amplitude = scrapy.Field()
+    # turnoverRate = scrapy.Field()
     pass
