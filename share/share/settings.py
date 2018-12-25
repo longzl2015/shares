@@ -46,5 +46,5 @@ COOKIES_ENABLED = True
 
 
 ITEM_PIPELINES = {
-    'share.pipelines.BaidustocksInfoPipeline': 300,
+    'share.pipelines.SpiderPipeline': 300,
 }

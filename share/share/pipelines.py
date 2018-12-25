@@ -5,27 +5,35 @@
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 
+from scrapy import signals
+from scrapy.contrib.exporter import CsvItemExporter
 
-class BaidustocksPipeline(object):
+
+class SpiderPipeline(CsvItemExporter):
+
+    def __init__(self):
+        self.files = {}
+
+    @classmethod
+    def from_crawler(cls, crawler):
+        print('==========pipeline==========from_crawler==========')
+        pipeline = cls()
+        crawler.signals.connect(pipeline.spider_opened, signals.spider_opened)
+        crawler.signals.connect(pipeline.spider_closed, signals.spider_closed)
+        return pipeline
+
+    def spider_opened(self, spider):
+        save_file = open('share_export.csv', 'wb+')
+        self.files[spider] = save_file
+        self.exporter = CsvItemExporter(save_file)
+        self.exporter.start_exporting()
+
+    def spider_closed(self, spider):
+        self.exporter.finish_exporting()
+        save_file = self.files.pop(spider)
+        save_file.close()
+
     def process_item(self, item, spider):
-        return item
-
-
-# 每个pipelines类中有三个方法
-class BaidustocksInfoPipeline(object):
-    # 当一个爬虫被调用时，对应的pipelines启动的方法
-    def open_spider(self, spider):
-        self.f = open('BaiduStockInfo.txt', 'w')
-
-    # 一个爬虫关闭或结束时的pipelines对应的方法
-    def close_spider(self, spider):
-        self.close()
-
-    # 对每一个item项进行处理时所对应的方法，也是pipelines中最主体的函数
-    def process_item(self, item, spider):
-        try:
-            line = str(dict(item)) + '\n'
-            self.f.write(line)
-        except:
-            pass
+        print(type(item))
+        self.exporter.export_item(item)
         return item

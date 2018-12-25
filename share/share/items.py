@@ -21,15 +21,30 @@ import scrapy
 
 
 class ShareItem(scrapy.Item):
-    # tradeDate = scrapy.Field()
-    # openingPrice = scrapy.Field()
-    # closePrice = scrapy.Field()
-    # minPrice = scrapy.Field()
-    # maxPrice = scrapy.Field()
-    # adAmount = scrapy.Field()
-    # adRate = scrapy.Field()
-    # tradingVolume = scrapy.Field()
-    # tradingAmount = scrapy.Field()
-    # amplitude = scrapy.Field()
-    # turnoverRate = scrapy.Field()
+    # 股票名称
+    name = scrapy.Field()
+    # 股票代码
+    code = scrapy.Field()
+    # 交易日期
+    tradeDate = scrapy.Field()
+    # 开盘价
+    openingPrice = scrapy.Field()
+    # 收盘价
+    closePrice = scrapy.Field()
+    # 最低价
+    minPrice = scrapy.Field()
+    # 最高价
+    maxPrice = scrapy.Field()
+    # 涨跌额
+    adAmount = scrapy.Field()
+    # 涨跌幅(%)
+    adRate = scrapy.Field()
+    # 成交量(手)
+    tradingVolume = scrapy.Field()
+    # 成交金额(万元)
+    tradingAmount = scrapy.Field()
+    # 振幅(%)
+    amplitude = scrapy.Field()
+    # 换手率(%)
+    turnoverRate = scrapy.Field()
     pass
